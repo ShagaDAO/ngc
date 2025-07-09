@@ -70,7 +70,7 @@ Before building full control-conditioned codecs, prove the concept with game-spe
 
 **"PNG for Fortnite" Approach:**
 - Train neural codecs on single-game video streams (no controller inputs needed)
-- Exploit game-specific visual patterns that H.264 can't optimize for
+- Exploit game-specific visual patterns that H.264 can't optimize for - similar to content-specific specialization validated in academic CDN research
 - Prove 20-30% bandwidth reduction on major games
 - Use existing SHAGA stream data to validate compression gains
 
@@ -89,7 +89,7 @@ Once game-specific compression is proven, integrate controller inputs for the re
 
 **Network Effects and Model Convergence**:
 - **Self-Improving Properties**: As more users play through the network, the models improve. Each gaming session provides additional training signal for the neural codecs.
-- **Game-Specific Convergence**: Different games have different physics and visual patterns. Models trained on Rocket League learn different representations than those trained on Skyrim.
+- **Game-Specific Convergence**: Different games have different physics and visual patterns. Models trained on Rocket League learn different representations than those trained on Skyrim. Academic research confirms content-specific models reduce performance variation.
 - **Federated Optimization**: Distributed training allows models to learn from diverse hardware configurations and network conditions, improving robustness.
 
 The SHAGA network serves a dual purpose:
@@ -131,7 +131,7 @@ VFIMamba temporal modeling + DCVC-FM stability + MobileNVC deployment
 = Control-conditioned video generation framework
 ```
 
-The technical foundation is proven. **The missing piece is gameplay data at scale.**
+The technical foundation is proven in academic literature. Neural enhancement in content delivery systems is an established research field with multiple deployed systems. **The missing piece is gameplay data at scale.**
 
 **Technical Challenges & Solutions**
 
@@ -142,7 +142,7 @@ The technical foundation is proven. **The missing piece is gameplay data at scal
 *Solution*: 8-bit quantization, tiled execution patterns
 
 **Real-time Latency**: Gaming requires <80ms end-to-end
-*Solution*: Lightweight models, predictive generation with corrections
+*Solution*: Lightweight models, predictive generation with corrections. Academic literature shows similar latency targets across multiple neural CDN systems.
 
 **Data Quality**: Training requires frame-perfect synchronization
 *Solution*: SHAGA's existing network infrastructure handles this

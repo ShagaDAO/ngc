@@ -14,6 +14,8 @@ What actually works for control-conditioned video generation.
 
 **Hunyuan-GameCraft (2025)**: Maps W,A,S,D,mouse to continuous camera parameters. Model distillation gets 20x speedup (6.6 FPS real-time). Shows discrete game controls can be embedded effectively.
 
+**Neural Enhancement in CDNs (Lee et al., CoNEXT 2020)**: Comprehensive academic survey of neural enhancement in content delivery systems. Samsung AI + Cambridge research validates content-specific model specialization and identifies identical challenges: computational cost, performance variability, real-time constraints. Multiple deployed systems demonstrate specialized models per content type reduce performance variation.
+
 **MobileCodec (2022)**: Asymmetric architecture - heavy server encoder, light mobile decoder. 31 FPS HD 720p on Snapdragon 8. Flow-agnostic motion (no pixel warping) keeps mobile implementation simple.
 
 ## What This Means
@@ -29,6 +31,7 @@ VFIMamba temporal modeling
 
 **Key Insights**:
 - Control conditioning actually works (GameNGen proved it)
+- Content-specific optimization reduces performance variation (Academic CDN literature)
 - Mobile deployment is possible with right architecture choices
 - Linear complexity temporal models are essential for long sessions
 - 32-frame refresh cycles prevent temporal drift
@@ -46,4 +49,4 @@ VFIMamba temporal modeling
 - EMA-VFI: O(n²) complexity, too slow
 - Pure diffusion: Too computationally expensive
 
-The research shows neural game codecs are technically feasible. The bottleneck is operational efficiency - memory bandwidth and thermal management, not raw compute power.
+The research shows neural game codecs are technically feasible. Neural enhancement in content delivery systems is an established academic field with multiple deployed systems. The bottleneck is operational efficiency - memory bandwidth and thermal management, not raw compute power.
