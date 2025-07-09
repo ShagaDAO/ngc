@@ -1,0 +1,33 @@
+# Neural Game Codecs Research - .gitignore
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Research notebooks
+.ipynb_checkpoints/
+
+# Documentation builds
+docs/_build/
+*.pdf
+
+# Environment files
+.env
+.env.local 
