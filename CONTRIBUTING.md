@@ -4,7 +4,7 @@ Research documentation for neural content delivery networks.
 
 ## What This Is
 
-Technical documentation and literature review for neural game codec development. SHAGA's operational network (private repos) generates the data and provides the infrastructure to build these systems.
+Technical documentation and literature review for neural game codec development. The Shaga Network (built by Shaga Labs, run by Shaga users) generates the data and provides the distributed compute infrastructure to make these systems reality.
 
 ## Research Areas
 

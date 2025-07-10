@@ -1,10 +1,10 @@
 # Experimental Research Notes
 
-Running experiments on SHAGA's gaming network to validate neural game codec approaches.
+Running experiments on the Shaga Network to validate neural game codec approaches.
 
 ## Current Status
 
-Framework ready. Waiting for Star Atlas Phase 0 data collection (Q3 2025) to start experimental validation.
+Research framework established. Star Atlas Phase 0 data collection in progress (Q3 2025) enabling experimental validation.
 
 ## Questions We Need to Answer
 
@@ -15,13 +15,13 @@ Framework ready. Waiting for Star Atlas Phase 0 data collection (Q3 2025) to sta
 ## Experimental Plan
 
 ### Baseline Measurements
-Test H.264, H.265, AV1 on gaming content from SHAGA nodes. Measure compression ratios, encoding costs, quality metrics. Find out where traditional codecs fail on gaming content.
+Test H.264, H.265, AV1 on gaming content from Shaga Network nodes. Measure compression ratios, encoding costs, quality metrics. Find out where traditional codecs fail on gaming content.
 
 ### Control Signal Analysis
 Analyze controller inputs vs frame changes across different games. Quantify how predictable game state transitions are. Measure information content in W,A,S,D,mouse streams.
 
 ### Neural Codec Validation
-Test literature review approaches (DCVC-FM, MobileNVC, VFIMamba) on real gaming data. Compare compression efficiency vs computational cost. Validate mobile deployment claims.
+Test approaches from [literature review](../literature_review/README.md) (DCVC-FM, MobileNVC, VFIMamba) on real gaming data. Compare compression efficiency vs computational cost. Validate mobile deployment claims.
 
 ## Metrics That Matter
 
@@ -32,10 +32,9 @@ Test literature review approaches (DCVC-FM, MobileNVC, VFIMamba) on real gaming 
 
 ## Infrastructure Advantages
 
-SHAGA's 333 nodes across 76 GPU models provide:
+The Shaga Network provides:
+- **4.19 PFLOPS** distributed GPU compute for neural codec validation
 - Real gaming workloads (not synthetic datasets)
-- Distributed testing environment
-- Actual network conditions
-- Mobile hardware diversity
-
-Testing on operational gaming infrastructure instead of lab conditions. 
+- Diverse hardware configurations for mobile deployment testing
+- Actual network conditions under load
+- Operational gaming infrastructure instead of lab conditions 

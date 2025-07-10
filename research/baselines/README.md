@@ -8,7 +8,7 @@ Performance analysis of existing codecs and neural compression approaches.
 
 **H.265/HEVC**: Better compression but higher latency. Hardware support varies. Most mobile clients decode H.264 more efficiently.
 
-**AV1**: Great compression, terrible encoding speed. Hardware support still limited. Not viable for real-time gaming yet.
+**AV1**: Great compression, but encoding speed and power consumption remain challenging for real-time gaming on mobile hardware.
 
 ## Neural Compression Results
 
@@ -27,6 +27,6 @@ Performance analysis of existing codecs and neural compression approaches.
 
 ## Key Insights
 
-Traditional codecs optimize for general video. Games have structure (predictable physics, limited assets) that neural models can exploit. Control inputs provide causality information that traditional codecs ignore.
+Traditional codecs optimize for general video. Games have structure (predictable physics, limited assets) that neural models can exploit. Control inputs provide causality information that traditional codecs ignore. See [literature review](../literature_review/README.md) for detailed analysis.
 
 The bottleneck isn't computational complexity - it's memory bandwidth and thermal management on mobile hardware. 

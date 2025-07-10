@@ -1,178 +1,139 @@
-# SHAGA: The First Neural Content Delivery Network
+# Shaga: The First Neural Content Delivery Network
 
 **Distributed Data Collection + Distributed Compute = Neural Content Delivery Networks**
 
+## The Structure
+
+**Shaga Labs** (company) → built software → run by **Shaga users** → in **The Shaga Network** (infrastructure) → generates data and compute → for **Neural Game Codecs** (research) → that transforms Shaga Network into a **Neural Content Delivery Network**
+
+*This repository documents the Neural Game Codecs research. The [Shaga Network](shaga-network/) is the operational infrastructure built by Shaga Labs and run by Shaga users that provides the training data and distributed compute needed to make NGC a reality.*
+
 ## The Core Insight: Compressing Causality
 
-Traditional video codecs predict the next frame from previous frames. In games, you have something more powerful: the player input that caused each frame change. 
+Traditional video codecs predict the next frame from previous frames. In games, player inputs (e.g., W,A,S,D keystrokes, mouse movements) causally drive changes, enabling compression of the causality itself rather than pixels.
 
-Every W,A,S,D keystroke, every mouse movement is the causal signal that generated the visual change. Instead of compressing the pixels, you can compress the causality itself.
+**Neural Game Codecs**: AI models trained on synchronized gameplay data to generate frames from inputs at scale.
 
-**Neural Game Codecs**: AI models that generate game frames from player inputs, trained on synchronized gameplay data at massive scale.
-
-This represents a fundamental shift in how we think about content delivery:
-
-**Predictable Physics**: Player inputs produce more predictable visual outcomes than natural video. W+A+mouse_delta → constrained camera trajectory → learnable pixel transformations.
-
-**Finite Asset Space**: Games use limited textures, models, and animations. Neural auto-encoders can learn compressed representations of these recurring visual patterns.
-
-**Causal Structure**: Unlike natural video, game frames have explicit causality. Frame N+1 is deterministically generated from Frame N + Control Input N. Critically, frames encode most of all hidden states from the game executable/engine - the visual output contains all the information that matters to the gamer.
+This shifts content delivery via:
+- **Predictable Physics**: Inputs yield constrained, learnable visual outcomes.
+- **Finite Asset Space**: Limited textures/models allow compressed representations.
+- **Causal Structure**: Frames encode game states; Frame N+1 derives from Frame N + Input N.
 
 ## The Opportunity: A Transformative Moment
 
-**What makes this possible now:**
-- SHAGA has operational gaming network (unique data source)
-- Mobile NPUs improving rapidly (though power-intensive)
-- Neural video generation breakthroughs (GameNGen proves concept)
-- Geographic constraints create first-mover advantages
+**Enablers Now**:
+- Operational Shaga Network as unique data source.
+- Rapid mobile NPU improvements (despite power intensity).
+- Breakthroughs like GameNGen proving neural video gen.
+- Geographic edges for first-mover advantages.
 
-**What makes this urgent:**
-- First comprehensive gameplay dataset wins
-- Google lost direct cloud gaming data collection (Stadia shutdown)
-- Mobile hardware efficiency improving rapidly  
-- Neural video generation advancing quickly
+**Urgency**:
+- First comprehensive gameplay dataset dominates.
+- Google's Stadia shutdown lost their data edge.
+- Hardware efficiency and neural gen advancing fast.
 
-**The Business Case**: CDNs like Twitch spend most bandwidth on top 5 games. Optimizing compression for individual games creates immediate value while building toward the full causal streaming vision.
+**Business Case**: Optimize for top games (e.g., Twitch's bandwidth hogs) for quick wins, building to full causal streaming.
 
-## Technical Solution: The Physics of Self-Improving Networks
+## Technical Solution: Self-Improving Networks
 
-**Revolutionary Approach**
+**Approach**:
 ```
-Traditional CDN: Moves video bits from servers to clients
-Neural CDN: Uses distributed compute to train AI models that reduce bandwidth requirements for recurrent traffic
+Traditional CDN: Transmits video bits.
+Neural CDN: Trains AI to cut bandwidth for recurring content.
 
-Standard: Predict frame N+1 from previous frames
-Neural: Predict frame N+1 from previous frames + controller input
+Standard: Predicts from prior frames.
+Neural: Predicts from prior frames + inputs.
 ```
 
-**Bandwidth Reduction Potential** (1080p@60fps)
-- Traditional stream: 6-8 Mbps (conservative baseline)
-- Neural codec: 1.55 Mbps anchor frames + 50 Kbps control data
-- **Conservative target**: 20% reduction (achievable with current neural codecs)
-- **Theoretical maximum**: 40-50% reduction (ideal conditions, predictable game content)
-- **Reality**: Highly dependent on game complexity and scene predictability
+**Bandwidth Potential** (1080p@60fps):
+- Traditional: 6-8 Mbps.
+- Neural: 1.55 Mbps anchors + 50 Kbps controls.
+- Target: 20% reduction (conservative); up to 40-50% theoretically.
+- Reality: Varies by game predictability.
 
-**Current Reality**: Neural codecs are 10-20x slower to encode than H.264 and consume significantly more power than traditional decoders. However, this gap is closing rapidly with specialized hardware.
+**Current Gaps**: Neural encoding 10-20x slower than H.264; decoding 3-7W vs. 0.5W mobile. Closing via hardware.
 
-**Energy Efficiency Analysis**
+**Energy Analysis**:
+- Transmission: 10-100 nJ/bit (WiFi); 1-3 nJ/bit (5G).
+- Neural: 0.1-10 pJ/MAC.
+- Trajectory: NPUs/ASICS narrowing gap.
 
-The fundamental physics favor neural approaches:
-- **Radio transmission**: 10-100 nJ/bit (WiFi), 1-3 nJ/bit (5G optimal)
-- **Neural processing**: 0.1-10 pJ/MAC operation
-- **Current challenge**: Mobile neural decoding consumes 3-7W vs. 0.5W for H.264
-- **Trajectory**: Next-generation NPUs and dedicated ASICs will close this gap
+**Latency**: <80ms RTT limits to ~500km fiber, favoring regional networks.
 
-**Network Latency Reality**
-Gaming requires <80ms round-trip latency. At light speed: 80ms RTT = 40ms one-way = 12,000km maximum distance. Real-world fiber and processing limits this to ~500km, creating **regional competitive advantages** for early movers.
+## Implementation Strategy
 
-## Implementation Strategy: Pragmatic Path to Revolution
+**Phase 1 (2025-2027)**: Game-specific compression.
+- Train on streams (no inputs initially).
+- Exploit limited visuals for 15-25% savings.
+- Validate with Shaga data.
 
-**Phase 1: Game-Specific Neural Compression (2025-2027)**
-*Prove the concept before building the full vision*
+**Phase 2 (2027-2030)**: Add control-conditioned gen.
 
-**Why This Works**:
-- **Constrained Visual Space**: Each game has limited color palettes, textures, and effects
-- **Predictable Rendering**: Game-specific lighting and shading patterns
-- **Repetitive Assets**: Same visual elements appear constantly
+**Challenges Addressed**:
+- Stability: 32-frame refresh (DCVC-FM).
+- Power: Quantization/hardware (MobileNVC).
+- Performance: Linear models (VFIMamba).
+- Multiplayer: Hybrid state management.
+- Security: Server validation/anti-cheat.
 
-**"PNG for Fortnite" Approach**:
-- Train neural codecs on single-game video streams (no controller inputs needed initially)
-- Exploit game-specific visual patterns that H.264 can't optimize for
-- **Target**: 15-25% bandwidth reduction on major games
-- **Validation**: Use existing SHAGA stream data to prove compression gains
+## Shaga Network Advantage
 
-**Phase 2: Full Control-Conditioned Generation (2027-2030)**
-*The revolutionary "compress causality" approach*
+**Resources**: Detailed in [Shaga Network](shaga-network/).
 
-Once game-specific compression is proven, integrate controller inputs for the transformative vision described above.
+**Hybrid Setup**:
+- Decentralized: P2P data gen with incentives.
+- Centralized: AI training/aggregation/deployment.
 
-**Technical Challenges Being Solved**:
-- **Temporal Stability**: Feature refresh every 32 frames (DCVC-FM approach)
-- **Mobile Power**: 8-bit quantization, specialized hardware (following MobileNVC)
-- **Real-time Performance**: Linear complexity models (VFIMamba architecture)
-- **Multiplayer Synchronization**: Hybrid server-client state management
-- **Security**: Server-side validation and anti-cheat systems
+**Network Effect**: More users → better models → efficiency gains.
+**Moat**: Operational data collection beats incumbents.
 
-## SHAGA's Unique Advantage: Data + Compute at Scale
+## Research Foundation
 
-**Current Network Resources** (July 2025):
-- **4.19 PFLOPS** total GPU compute (FP32)
-- **39.51 Gbps** total network throughput  
-- **333 nodes** across 76 GPU models with full hardware profiling
+**Components**:
+- DCVC-FM: 29.7% bitrate cut, stable.
+- VFIMamba: O(n) for sequences.
+- MobileNVC: 38.9 FPS 1080p mobile.
+- GameNGen: 20 FPS control-conditioned Doom.
+- Lee et al.: Content-specific optimization.
 
-**Hybrid Architecture**: The perfect combination for neural CDN development:
+**Challenge**: Integrate for real-time modern games—Shaga's focus.
 
-**Decentralized Data Collection**: 
-- Peer-to-peer gaming network generating training data
-- Distributed across diverse hardware configurations
-- Crypto-economic incentives for network participation
+## Star Atlas Proof-of-Concept
 
-**Centralized AI Development**:
-- Neural codec research and model training
-- Data aggregation and quality control
-- Deployment of game-specific models across the network
+**Why**: Predictable physics, consistent style, active base, high bandwidth.
+**Timeline**:
+- Phase 0 (2025): Data/baseline.
+- Phase 1 (2026-2027): Compression prototype.
+- Phase 2 (2028-2030): Full gen.
 
-**The Network Effect**: As more users play through SHAGA, the models improve. Each gaming session provides additional training signal for the neural codecs. Different games converge to different optimal representations.
+## Current Status
 
-**Competitive Moat**: While incumbents have superior resources, SHAGA has the **operational gaming network generating training data right now**. This first-mover advantage in data collection could be decisive.
+- Network: Operational, generating data.
+- Partnership: Star Atlas Phase 0 (Q3 2025).
+- Review: SOTA analysis complete.
+- Prototype: Compression in dev.
 
-## Research Foundation: Standing on Giants' Shoulders
+**Assessment**: High-risk/reward; challenges unsolved, but insight sound and infrastructure ready.
 
-**Validated Components**:
-- **DCVC-FM (2024)**: 29.7% bitrate reduction, temporal stability solved
-- **VFIMamba (NeurIPS 2024)**: O(n) linear complexity for long sequences
-- **MobileNVC (Qualcomm)**: 38.9 FPS 1080p neural decoding on mobile hardware
-- **GameNGen (Google)**: 20 FPS neural DOOM proves control-conditioned generation
-- **Neural CDN Research (Lee et al.)**: Academic validation of content-specific optimization
+## The Vision: Transforming Delivery
 
-**The Integration Challenge**: Individual components exist, but no integrated system demonstrates real-time, full-resolution, control-conditioned generation for modern games. This is the engineering challenge SHAGA is uniquely positioned to solve.
+Neural Game Codecs shift from pixel-moving to experience-gen:
+- 20-50% bandwidth cut.
+- New interactive media.
+- Advantages for adopters.
+- Gaming economics overhaul.
 
-## The Star Atlas Campaign: Proving the Concept
-
-**Why Star Atlas?**
-- Predictable physics engine (learnable patterns)
-- Consistent visual style (AI-friendly)
-- Active player base (data generation)
-- High bandwidth requirements (strong ROI for optimization)
-
-**Realistic Timeline**:
-- **Phase 0 (2025)**: Data collection and baseline establishment
-- **Phase 1 (2026-2027)**: Game-specific compression prototype
-- **Phase 2 (2028-2030)**: Full control-conditioned generation
-
-**Strategic Value**: Prove the concept on one game, then expand to the full causal streaming vision.
-
-## Current Status: Early But Positioned
-
-- **Network**: Operational with real users generating training data
-- **Star Atlas Partnership**: Phase 0 data collection launching Q3 2025
-- **Literature Review**: Complete technical analysis of state-of-the-art
-- **Prototype**: Game-specific compression in development
-
-**Honest Assessment**: This is high-risk, high-reward research. Multiple technical challenges remain unsolved. However, the core insight is sound, the components exist, and SHAGA has the unique combination of data and compute needed to make it real.
-
-## The Vision: Transforming Content Delivery
-
-Neural Game Codecs represent a fundamental shift from moving pixels to generating experiences. If successful, this technology will:
-
-- **Reduce bandwidth requirements by 20-50%** for gaming content
-- **Enable new forms of interactive media** beyond traditional streaming
-- **Create sustainable competitive advantages** for early adopters
-- **Transform the economics of content delivery** for the gaming industry
-
-**The Revolutionary Potential**: Instead of encoding every pixel, we encode the intention. Instead of compressing the result, we compress the causality itself.
-
-**SHAGA's Unique Position**: While tech giants have superior resources, SHAGA has the operational gaming network generating the training data needed to make this vision real. The race is to build the dataset and prove the concept before incumbents realize what's possible.
-
-**Success means**: Games that generate locally with minimal bandwidth, powered by AI trained on SHAGA's unique gameplay dataset & distributed compute network.
+**Approach**: Encode causality rather than pixels.
+**Advantage**: Operational data collection infrastructure.
+**Goal**: Local generation with minimal bandwidth.
 
 ## Documentation
 
-- [Literature Review](research/literature_review/README.md) - Current state-of-the-art research analysis
-- [SHAGA Technical Blueprint](https://zenodo.org/records/15778429) - Engineering blueprint 
-- [Experimental Research](research/experiments/README.md) - Research methodology and validation approaches
-- [Baseline Analysis](research/baselines/README.md) - Traditional codec performance analysis
+- [Literature Review](research/literature_review/README.md)
+- [Shaga Blueprint](https://zenodo.org/records/15778429)
+- [Experiments](research/experiments/README.md)
+- [Baselines](research/baselines/README.md)
 
 ---
 
-*The window for collecting foundational neural gaming data is now. This is speculative, high-risk research with transformative potential. The technical challenges are significant, but the core insight about compressing causality could fundamentally change how we think about content delivery.* 
+*Projections based on current trends; actual results may vary. High-risk research with transformative potential.* 
