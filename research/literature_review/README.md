@@ -37,6 +37,8 @@ The key insight: You can trade computation for communication. More local compute
 
 **Gap Analysis**: Mobile deployment requires significant efficiency improvements to match traditional codecs while delivering compression benefits.
 
+**Economic Reality**: See [Energy Economics Analysis](../energy_economics/README.md) for detailed break-even analysis and market-specific deployment scenarios.
+
 
 **Key Insights**:
 - Control conditioning is theoretically feasible (GameNGen proof of concept)

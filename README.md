@@ -57,6 +57,7 @@ Neural: Predicts from prior frames + inputs.
 - Transmission: 10-100 nJ/bit (WiFi); 1-3 nJ/bit (5G).
 - Neural: 0.1-10 pJ/MAC.
 - Trajectory: NPUs/ASICS narrowing gap.
+- **Economics**: See [Energy Economics Analysis](research/energy_economics/README.md) for break-even scenarios and market-specific deployment strategies.
 
 **Latency**: <80ms RTT limits to ~500km fiber, favoring regional networks.
 
@@ -130,6 +131,7 @@ Neural Game Codecs shift from pixel-moving to experience-gen:
 ## Documentation
 
 - [Literature Review](research/literature_review/README.md)
+- [Energy Economics Analysis](research/energy_economics/README.md)
 - [Shaga Blueprint](https://zenodo.org/records/15778429)
 - [Experiments](research/experiments/README.md)
 - [Baselines](research/baselines/README.md)
