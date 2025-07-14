@@ -55,9 +55,3 @@ The network feeds [Neural Game Codecs](../README.md) research by providing:
 - Distributed compute for training
 
 When codecs mature, this evolves the network into a Neural Content Delivery Network—AI-optimized for bandwidth reduction and interactive media.
-
----
-
-*Live dashboard: economics.shaga.xyz*  
-*API: api.shaga.xyz/metrics*  
-*Whitepaper: shaga.xyz/economics* 
