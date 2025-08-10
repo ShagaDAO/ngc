@@ -1,0 +1,6 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^mailto:" },
+    { "pattern": "^https://schemas.shaga.xyz" }
+  ]
+} 

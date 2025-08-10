@@ -1,6 +1,27 @@
 # Shaga: The First Neural Content Delivery Network
 
+> **NGC = research repo.** No production code here.
+> - **Data spec + validator:** lives in **GAP** → https://github.com/ShagaDAO/gap  
+> - **Wire protocol + validator:** lives in **DGN** → https://github.com/ShagaDAO/dgn  
+> - **NGC's job:** explore neural game codecs that *consume GAP data* and *could emit DGN frames* in future.
+
+> **Posture:** Research-only. Performance numbers are **targets**, not guarantees.  
+> **Provenance:** AI-assisted for docs/boilerplate with human review (see PROVENANCE.md).  
+> **Security:** No runtime code; see SECURITY.md.
+
+## How the repos fit (one view)
+
+GAP (frames+controls spec) ➜ [validated shards] ➜ NGC (research: train/eval codecs) ➜ DGN (protocol: SemanticUpdate + ResidualChunk)
+
+- **GAP → NGC:** NGC experiments assume GAP v0.x shards (video + controls JSONL).
+- **NGC → DGN (future):** When we prototype, we'll export "SemanticUpdate/ResidualChunk" *samples* that conform to DGN's schemas for analysis.
+
 **Distributed Data Collection + Distributed Compute = Neural Content Delivery Networks**
+
+> ### Context split (avoid confusion)
+> - **Shaga Network usage stats (165k MAU, 200k+ hours)** refer to **classical game streaming** on Shaga – not neural codecs.
+> - **NGC** is research toward neural codecs. We do **not** deploy NGC in production.
+> - When we say "targets" (e.g., 2–5 Mbps, ≤50 ms): these are **engineering targets**, not measured results. See BENCHMARKS.md.
 
 ## The Structure
 
@@ -127,6 +148,26 @@ Neural Game Codecs shift from pixel-moving to experience-gen:
 **Approach**: Encode causality rather than pixels.
 **Advantage**: Operational data collection infrastructure.
 **Goal**: Local generation with minimal bandwidth.
+
+## Toy pass-through (offline)
+This repo is **research only**. To make the "GAP → NGC → DGN" flow concrete, we include two **DGN‑shaped sample files**:
+
+- `samples/dgn/semantic_update.jsonl`
+- `samples/dgn/residual_chunk.json`
+
+They are schema-only examples (static), so DGN's validator can confirm the wire format:
+```bash
+# from the DGN repo
+python3 tools/validator/cli.py check --schema dgn-semantic-update-0.1.0.json <path>/ngc/samples/dgn/semantic_update.jsonl
+python3 tools/validator/cli.py check --schema dgn-residual-chunk-0.1.0.json <path>/ngc/samples/dgn/residual_chunk.json
+```
+
+### Compatibility
+| Producer | Consumer | Status |
+|---|---|---|
+| GAP v0.2.x shard | NGC notebooks/tools (research) | ✅ supported (toy) |
+| NGC DGN‑shaped samples | DGN validator | ✅ passes schemas |
+| DGN 0.1.0 schemas | DGN validator | ✅ CI enforced |
 
 ## Documentation
 

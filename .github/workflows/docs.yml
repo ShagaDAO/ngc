@@ -1,0 +1,29 @@
+name: docs-ci
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "23 7 * * *"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown link check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: "yes"
+          config-file: ".mlc.config.json"
+      - name: Claims hygiene grep (targets label present)
+        run: |
+          grep -q "engineering targets" BENCHMARKS.md
+  interop-crosslinks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure GAP/DGN links exist in README
+        run: |
+          grep -q "github.com/ShagaDAO/gap" README.md
+          grep -q "github.com/ShagaDAO/dgn" README.md 

@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-01-02T10:15:30.123Z",
+  "session_id": "sess_abc123",
+  "chunk_id": "residual_001",
+  "residual_data": {
+    "compression_method": "neural_quantized",
+    "quality_level": "high",
+    "regions": [
+      {
+        "bbox": {"x": 120, "y": 80, "width": 200, "height": 150},
+        "priority": "high",
+        "encoded_data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+        "encoding": "base64_png"
+      },
+      {
+        "bbox": {"x": 400, "y": 300, "width": 100, "height": 80},
+        "priority": "medium", 
+        "encoded_data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+        "encoding": "base64_png"
+      }
+    ],
+    "metadata": {
+      "total_bytes": 1247,
+      "compression_ratio": 0.23,
+      "neural_model_version": "ngc-v0.1.0-experimental"
+    }
+  }
+} 
